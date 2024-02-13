@@ -2,6 +2,7 @@ import express from "express";
 import pg from "pg";
 import dotenv from "dotenv";
 
+// fork demo
 dotenv.config({ path: "../.env" });
 
 const { PORT, DATABASE_URL } = process.env;
