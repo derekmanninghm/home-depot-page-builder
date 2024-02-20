@@ -1,11 +1,13 @@
 import express from "express";
 import pg from "pg";
 import dotenv from "dotenv";
+import mongoose, { mongo } from 'mongoose';
 
 // fork demo
 dotenv.config({ path: "../.env" });
 
 const { PORT, DATABASE_URL } = process.env;
+// console.log(DATABASE_URL)
 
 const client = new pg.Client({
   connectionString: DATABASE_URL,
@@ -13,6 +15,8 @@ const client = new pg.Client({
 
 await client.connect();
 
+await mongoose.connect('mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.5');
+console.log(await products.find())
 const app = express();
 
 app.use(express.json());
